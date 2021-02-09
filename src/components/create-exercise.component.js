@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import 'react-datepicker/dist/react-datepicker.css';
+import DatePicker from 'react-datepicker'
 
 export default class CreateExercise extends Component {
   constructor(props) {
@@ -70,7 +72,50 @@ export default class CreateExercise extends Component {
       <div>
         <h3>Create New Exercise Log</h3>
         <form onSubmit={this.onSubmit}>
-            <div className='form-group'></div>
+            <div className='form-group'>
+                <label>Username: </label>
+                <select ref='userInput'
+                    required
+                    className='form-control'
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}>
+                        {
+                            this.state.users.map(function(user) {
+                                return <option
+                                key={user}
+                                value={user}>{user}
+                                </option>;
+                            })
+                        }
+                    </select>
+            </div>
+            <div className='form-group'>
+                <label>Description</label>
+                <input type='text'
+                    required
+                    className="form-control"
+                    value={this.state.description}
+                    onChange={this.onChnageDescription}
+                />
+            </div>
+            <div className='form-group'>
+                <label>Duration (in minutes)</label>
+                <input type='text'
+                    required
+                    className="form-control"
+                    value={this.state.duration}
+                    onChange={this.onChangeDuration}
+                />
+            </div>
+            <div className='form-group'>
+                <label>Date: </label>
+                <div>
+                    <DatePicker
+                        selected={this.state.date}
+                        onChnage={this.onChangeDate}
+                    />
+                </div>
+            </div>
         </form>
       </div>
     );
