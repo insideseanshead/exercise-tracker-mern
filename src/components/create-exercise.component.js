@@ -90,12 +90,12 @@ export default class CreateExercise extends Component {
                     </select>
             </div>
             <div className='form-group'>
-                <label>Description</label>
+                <label>Description: </label>
                 <input type='text'
                     required
                     className="form-control"
                     value={this.state.description}
-                    onChange={this.onChnageDescription}
+                    onChange={this.onChangeDescription}
                 />
             </div>
             <div className='form-group'>
@@ -112,9 +112,13 @@ export default class CreateExercise extends Component {
                 <div>
                     <DatePicker
                         selected={this.state.date}
-                        onChnage={this.onChangeDate}
+                        onChange={this.onChangeDate}
                     />
                 </div>
+            </div>
+
+            <div className='form-group'>
+                <input type='submit' value='Create Exercise Log' className='btn btn-primary' />
             </div>
         </form>
       </div>
